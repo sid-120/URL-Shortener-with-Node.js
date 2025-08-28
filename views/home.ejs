@@ -3,11 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home page</title>
+    <title>home</title>
     <style>
       body {
         font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
           "Lucida Sans", Arial, sans-serif;
+
+        background-color: beige;
+      }
+      h1 {
+        text-align: center;
+      }
+      table {
+        width: 50%;
+        max-width: 600px;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 10px;
+        overflow: hidden;
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #aaa;
+      }
+      th {
+        background: #3498db;
+        color: white;
       }
     </style>
   </head>
@@ -16,14 +39,15 @@
     <% if (locals.id) { %>
     <p>URL Generated: http://localhost:8001/url/<%= id %></p>
     <% } %>
+
     <div>
-      <form method="POST" action="/url/">
+      <form method="post" action="/url/">
         <label>Enter your Original URL</label>
         <input type="text" name="url" placeholder="https://example.com" />
         <button type="submit">Generate</button>
       </form>
     </div>
-    <div>
+    <div style="margin-top: 30px">
       <% if (locals.urls) { %>
       <table>
         <thead>
@@ -40,7 +64,6 @@
             <td><%= url.redirectURL %></td>
             <td><%= url.visitHistory.length %></td>
           </tr>
-
           <% }) %>
         </tbody>
       </table>
